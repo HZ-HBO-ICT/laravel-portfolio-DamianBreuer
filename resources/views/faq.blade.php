@@ -31,26 +31,18 @@
     <article>
         <h1>Here are some questions that are asked frequently:</h1>
         <h2>
-            <details style="margin-bottom: 35px;">
-                <summary>How can you print a document from your laptop at HZ?</summary>
-                <h5>In the copyroom with your HZ pass.</h5>
-            </details>
-            <details style="margin-bottom: 35px;">
-                <summary>How can you scan a document and send it to your laptop at HZ?</summary>
-                <h5>With the printers in the copyroom you can scan a document with your HZ pass. The scan will be send to your email as a PDF.</h5>
-            </details>
-            <details style="margin-bottom: 35px;">
-                <summary>What do you need to do when you are sick or show symptoms of the coronavirus?</summary>
-                <h5>Send your teacher a message and follow the class online if possible.</h5>
-            </details>
-            <details style="margin-bottom: 35px;">
-                <summary>How can you book a projectspace in one of the wings?</summary>
-                <h5>Through the selfservice portal at the HZportal you can easily book a projectspace.</h5>
-            </details>
-            <details style="margin-bottom: 35px;">
-                <summary>What are the instructions if you want to park your car at the HZ parking lot?</summary>
-                <h5>With the HZ pass the barrier will open/close.</h5>
-            </details>
+            @foreach($posts as $post)
+                <details style = "margin-bottom: 35px;">
+                    <summary>{{ $post->question }}</summary>
+                    <p>
+                        {{$post->answer}}
+                    </p>
+                    {{--TODO: check if there is a link--}}
+                    <p>
+                        <a href="{{ $post->link }}">{{$post->link}}</a>
+                    </p>
+                </details>
+            @endforeach
         </h2>
 
         <a href="https://hz.nl/" target="_blank"><img src="img/hz.png" style="position: fixed; width: 165px; height: 45px; left: 25px; top: 695px;" alt="HZ logo"></a>

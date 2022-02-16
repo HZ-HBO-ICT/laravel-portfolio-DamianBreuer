@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Website Damian Breuer</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>@yield('title')</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
         <ul>
             <li class="{{ Request::path() === '/' ? 'active' : '' }}"><a href="/">Home</a></li>
             <li class="{{ Request::path() === 'profile' ? 'active' : '' }}"><a href="profile">Profile</a></li>
-            <li class="{{ Request::path() === 'blog' ? 'active' : '' }}"><a href="blog">Blog</a></li>
+            <li class="{{ Request::path() === 'articles' ? 'active' : '' }}"><a href="articles">Blog</a></li>
             <li class="{{ Request::path() === 'faq' ? 'active' : '' }}"><a href="faq">FAQ</a></li>
             <li class="{{ Request::path() === 'dashboard' ? 'active' : '' }}"><a href="dashboard">Dashboard</a></li>
             <li class="{{ Request::path() === 'contact' ? 'active' : '' }}" style="float:right"><a href="contact">Contact</a></li>

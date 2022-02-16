@@ -16,4 +16,20 @@ class FaqController extends Controller
             'posts' => $posts
         ]);
     }
+
+    public function create()
+    {
+        return view('faq-form');
+    }
+
+    public function store()
+    {
+        $faq = new Faq();
+        $faq->question = request('question');
+        $faq->answer = request('answer');
+        $faq->link = request('link');
+
+        $faq->save();
+        return redirect('/faq');
+    }
 }

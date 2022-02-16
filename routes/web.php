@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ArticlesController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PostsController;
@@ -33,10 +35,17 @@ route::get('/', [IndexController::class, 'show']);
 
 route::get('/profile', [ProfileController::class, 'show']);
 
-route::get('/blog', [BlogController::class, 'show']);
+//route::get('/blog', [BlogController::class, 'show']);
 
 route::get('/faq', [FaqController::class, 'show']);
+route::get('/faq/create', [FaqController::class, 'create']);
+route::post('/faq', [FaqController::class, 'store']);
 
 route::get('/dashboard', [DashboardController::class, 'show']);
 
 route::get('/contact', [ContactController::class, 'show']);
+
+route::get('/articles', [ArticlesController::class, 'index']);
+route::post('/articles', [ArticlesController::class, 'store']);
+route::get('/articles/create', [ArticlesController::class, 'create']);
+route::get('/articles/{id}', [ArticlesController::class, 'show']);

@@ -1,6 +1,22 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ArticlesController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\PostsController;
+
+use App\Http\Controllers\IndexController;
+
+use App\Http\Controllers\ProfileController;
+
+use App\Http\Controllers\BlogController;
+
+use App\Http\Controllers\FaqController;
+
+use App\Http\Controllers\DashboardController;
+
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,21 +29,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/posts/{post}', function ($post) {
-    $posts = [
-        'my-first-post' => 'Hello, this is my first blog post!',
-        'my-second-post' => 'Now I am getting the hang of this blogging thing.'
-    ];
+route::get('/posts/{post}', [PostsController::class, 'show']);
 
-    if (!array_key_exists($post, $posts)) {
-        abort(404, 'Sorry, that post was not found.');
-    }
+route::get('/', [IndexController::class, 'show']);
 
-    return view('post', [
-        'post' => $posts[$post]
-    ]);
-});
+route::get('/profile', [ProfileController::class, 'show']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//route::get('/blog', [BlogController::class, 'show']);
+
+route::get('/faq', [FaqController::class, 'show']);
+route::get('/faq/create', [FaqController::class, 'create']);
+route::post('/faq', [FaqController::class, 'store']);
+
+route::get('/dashboard', [DashboardController::class, 'show']);
+
+route::get('/contact', [ContactController::class, 'show']);
+
+route::get('/articles', [ArticlesController::class, 'index']);
+route::post('/articles', [ArticlesController::class, 'store']);
+route::get('/articles/create', [ArticlesController::class, 'create']);
+route::get('/articles/{id}', [ArticlesController::class, 'show']);
